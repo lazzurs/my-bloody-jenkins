@@ -260,7 +260,7 @@ adminPassword: admin
     )
     def realm = configHandler.setupJenkinsDatabase(config)
     assert (realm instanceof hudson.security.HudsonPrivateSecurityRealm)
-    assert hudson.model.User.all.size() == 2 //SYSTEM is created by default
+    assert hudson.model.User.all.size() == 1 
  }
 
 
