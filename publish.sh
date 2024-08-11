@@ -4,7 +4,6 @@ docker-build(){
     local from_tag=${1}
     local to_tag=${2}
     docker build --rm --pull --force-rm -t ghcr.io/lazzurs/my-bloody-jenkins:${to_tag} --build-arg=FROM_TAG=${from_tag} .
-    docker tag lazzurs/my-bloody-jenkins:${to_tag}
     docker push ghcr.io/lazzurs/my-bloody-jenkins:${to_tag}
 }
 
