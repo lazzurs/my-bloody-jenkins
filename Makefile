@@ -15,8 +15,8 @@ build-alpine:
 build-debian:
 	docker build --rm --force-rm -t ghcr.io/lazzurs/my-bloody-jenkins $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(LTS_VERSION) .
 
-build-jdk11:
-	docker build --rm --force-rm -t ghcr.io/lazzurs/my-bloody-jenkins $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(LTS_VERSION)-jdk11 .
+build-jdk17:
+	docker build --rm --force-rm -t ghcr.io/lazzurs/my-bloody-jenkins $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(LTS_VERSION)-jdk17 .
 
 test-alpine: build-alpine
 	bats tests
@@ -24,7 +24,7 @@ test-alpine: build-alpine
 test-debian: build-debian
 	bats tests
 
-test-jdk11: build-jdk11
+test-jdk17: build-jdk17
 	bats tests
 
 update-plugins:
