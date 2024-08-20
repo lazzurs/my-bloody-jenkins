@@ -5,9 +5,9 @@ DEFAULT_BUILD_ARGS = --build-arg http_proxy=$(http_proxy) --build-arg https_prox
 
 default: test-all
 
-build-all: build-alpine build-debian build-jdk11
+build-all: build-alpine build-debian build-jdk17 build-jdk21
 
-test-all: test-alpine test-debian test-jdk11
+test-all: test-alpine test-debian test-jdk17 test-jdk21
 
 build-alpine:
 	docker build --rm --force-rm -t ghcr.io/lazzurs/my-bloody-jenkins $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(LTS_VERSION)-alpine .
@@ -17,6 +17,9 @@ build-debian:
 
 build-jdk17:
 	docker build --rm --force-rm -t ghcr.io/lazzurs/my-bloody-jenkins $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(LTS_VERSION)-jdk17 .
+
+build-jdk21:
+	docker build --rm --force-rm -t ghcr.io/lazzurs/my-bloody-jenkins $(DEFAULT_BUILD_ARGS) --build-arg=FROM_TAG=$(LTS_VERSION)-jdk21 .
 
 test-alpine: build-alpine
 	bats tests
